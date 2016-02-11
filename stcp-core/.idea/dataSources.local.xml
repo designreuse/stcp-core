@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="MySQL - stcpdb@localhost" uuid="28200396-d80b-405f-9f75-5315679246f2">
+      <secret-storage>master_key</secret-storage>
+      <user-name>root</user-name>
+      <schema-pattern>stcpdb.*</schema-pattern>
+      <default-schemas>stcpdb.*</default-schemas>
+    </data-source>
+  </component>
+</project>

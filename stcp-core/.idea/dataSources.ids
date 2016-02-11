@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - stcpdb@localhost" uuid="28200396-d80b-405f-9f75-5315679246f2">
+    <database-info product="MySQL" version="5.6.21" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="mixed" quoted-identifiers="upper"/>
+    <schema name="" catalog="stcpdb"/>
+    <table name="account" schema="" catalog="stcpdb" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="username" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="password" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="role_user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="user_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id,user_id"/>
+      <foreign-key name="fk_account_role_user" columns="role_user_id" ref-table="role_user" ref-schema="" ref-catalog="stcpdb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_account_user1" columns="user_id" ref-table="user" ref-schema="" ref-catalog="stcpdb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="fk_course_lecture_account1" table="course_lecture" schema="" catalog="stcpdb" columns="account_id"/>
+      <exported-key name="fk_course_plan_account1" table="course_plan" schema="" catalog="stcpdb" columns="account_id"/>
+      <index name="fk_account_role_user_idx" unique="false" columns="role_user_id"/>
+      <index name="fk_account_user1_idx" unique="false" columns="user_id"/>
+    </table>
+    <table name="course" schema="" catalog="stcpdb" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="code" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="name" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="min_student" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="max_student" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="detail" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="credit" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="status" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="type" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="course_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_course_curriculum_course1" table="course_curriculum" schema="" catalog="stcpdb" columns="course_id"/>
+      <exported-key name="fk_course_lecture_course1" table="course_lecture" schema="" catalog="stcpdb" columns="course_id"/>
+      <exported-key name="fk_course_plan_course1" table="course_plan" schema="" catalog="stcpdb" columns="course_id"/>
+      <exported-key name="fk_course_time_course1" table="course_time" schema="" catalog="stcpdb" columns="course_id"/>
+    </table>
+    <table name="course_curriculum" schema="" catalog="stcpdb" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="course_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="curriculum_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_course_curriculum_course1" columns="course_id" ref-table="course" ref-schema="" ref-catalog="stcpdb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_course_curriculum_curriculum1" columns="curriculum_id" ref-table="curriculum" ref-schema="" ref-catalog="stcpdb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_course_curriculum_course1_idx" unique="false" columns="course_id"/>
+      <index name="fk_course_curriculum_curriculum1_idx" unique="false" columns="curriculum_id"/>
+    </table>
+    <table name="course_lecture" schema="" catalog="stcpdb" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="account_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="course_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_course_lecture_account1" columns="account_id" ref-table="account" ref-schema="" ref-catalog="stcpdb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_course_lecture_course1" columns="course_id" ref-table="course" ref-schema="" ref-catalog="stcpdb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_course_lecture_account1_idx" unique="false" columns="account_id"/>
+      <index name="fk_course_lecture_course1_idx" unique="false" columns="course_id"/>
+    </table>
+    <table name="course_plan" schema="" catalog="stcpdb" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="semester" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="status" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="account_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="course_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_course_plan_account1" columns="account_id" ref-table="account" ref-schema="" ref-catalog="stcpdb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="fk_course_plan_course1" columns="course_id" ref-table="course" ref-schema="" ref-catalog="stcpdb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_course_plan_account1_idx" unique="false" columns="account_id"/>
+      <index name="fk_course_plan_course1_idx" unique="false" columns="course_id"/>
+    </table>
+    <table name="course_time" schema="" catalog="stcpdb" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="study_time" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="exam_time" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="status" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="semester" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="course_id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <foreign-key name="fk_course_time_course1" columns="course_id" ref-table="course" ref-schema="" ref-catalog="stcpdb" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="fk_course_time_course1_idx" unique="false" columns="course_id"/>
+    </table>
+    <table name="curriculum" schema="" catalog="stcpdb" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="name" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="started_year" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <column name="acc_id" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="start_year" sqlType="VARCHAR" precision="45" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_course_curriculum_curriculum1" table="course_curriculum" schema="" catalog="stcpdb" columns="curriculum_id"/>
+    </table>
+    <table name="role_user" schema="" catalog="stcpdb" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="desc" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <column name="role" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_account_role_user" table="account" schema="" catalog="stcpdb" columns="role_user_id"/>
+    </table>
+    <table name="user" schema="" catalog="stcpdb" type="TABLE">
+      <column name="id" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="firstname" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="lastname" sqlType="VARCHAR" precision="45" scale="0" nullable="false" jdbcType="12"/>
+      <column name="gender" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="address" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="birthday" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="mobile" sqlType="VARCHAR" precision="20" scale="0" nullable="true" jdbcType="12"/>
+      <column name="citizen_id" sqlType="VARCHAR" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="semester" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="study_program" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="faculty" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="major" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_account_user1" table="account" schema="" catalog="stcpdb" columns="user_id"/>
+    </table>
+  </data-source>
+</component>
