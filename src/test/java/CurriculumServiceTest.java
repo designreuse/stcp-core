@@ -21,7 +21,6 @@ import static junit.framework.TestCase.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {PersistenceConfig.class}, loader = AnnotationConfigContextLoader.class)
-@Transactional
 public class CurriculumServiceTest {
 
     @Autowired
@@ -43,6 +42,7 @@ public class CurriculumServiceTest {
     }
 
     @Test
+    @Transactional
     public void createCurriculum_ShouldSaveToDB() {
         curriculumRepository.create(cr1);
         List<Curriculum> curriculums = curriculumRepository.findAll();
