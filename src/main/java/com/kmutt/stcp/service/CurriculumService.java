@@ -14,7 +14,7 @@ public class CurriculumService {
 
     @Autowired CurriculumRepository curriculumRepository;
 
-    @Transactional(value = "jpaTransactionManager")
+    @Transactional
     public void save(Curriculum curriculum) {
         curriculumRepository.create(curriculum);
     }

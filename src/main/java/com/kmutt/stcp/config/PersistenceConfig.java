@@ -28,8 +28,8 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@EnableJpaRepositories(basePackages = {"com.kmutt.stcp"}, transactionManagerRef = "jpaTransactionManager")
-@EnableJpaAuditing
+//@EnableJpaRepositories(basePackages = {"com.kmutt.stcp"}, transactionManagerRef = "jpaTransactionManager")
+//@EnableJpaAuditing
 @PropertySource({"classpath:application.properties"})
 @ComponentScan({"com.kmutt.stcp"})
 public class PersistenceConfig {
@@ -69,18 +69,18 @@ public class PersistenceConfig {
         return sessionFactory;
     }
 
-    @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
-        final LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
-        emf.setDataSource(dataSource());
-        emf.setPackagesToScan(new String[]{"com.kmutt.stcp.entity"});
-
-        final JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-        emf.setJpaVendorAdapter(vendorAdapter);
-        emf.setJpaProperties(hibernateProperties());
-
-        return emf;
-    }
+//    @Bean
+//    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
+//        final LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
+//        emf.setDataSource(dataSource());
+//        emf.setPackagesToScan(new String[]{"com.kmutt.stcp.entity"});
+//
+//        final JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
+//        emf.setJpaVendorAdapter(vendorAdapter);
+//        emf.setJpaProperties(hibernateProperties());
+//
+//        return emf;
+//    }
 
     @Bean(name = "hibernateTransactionManager")
     public PlatformTransactionManager hibernateTransactionManager() {
@@ -90,12 +90,12 @@ public class PersistenceConfig {
     }
 
 
-    @Bean(name = "jpaTransactionManager")
-    public PlatformTransactionManager jpaTransactionManager() {
-        final JpaTransactionManager transactionManager = new JpaTransactionManager();
-        transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
-        return transactionManager;
-    }
+//    @Bean(name = "jpaTransactionManager")
+//    public PlatformTransactionManager jpaTransactionManager() {
+//        final JpaTransactionManager transactionManager = new JpaTransactionManager();
+//        transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
+//        return transactionManager;
+//    }
 
 
     @Bean

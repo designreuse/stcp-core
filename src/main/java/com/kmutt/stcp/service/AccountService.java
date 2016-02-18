@@ -14,7 +14,7 @@ public class AccountService {
     @Autowired
     AccountRepository accountRepository;
 
-    @Transactional(value = "jpaTransactionManager")
+    @Transactional
     public void save(Account account) {
         accountRepository.create(account);
     }

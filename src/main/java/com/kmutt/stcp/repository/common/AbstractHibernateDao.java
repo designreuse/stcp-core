@@ -29,7 +29,6 @@ public abstract class AbstractHibernateDAO<T extends Serializable> {
 
     public void create(T entity) {
         getCurrentSession().persist(entity);
-        getCurrentSession().flush();
     }
 
     public void update(T entity) {
@@ -49,7 +48,4 @@ public abstract class AbstractHibernateDAO<T extends Serializable> {
         return sessionFactory.getCurrentSession();
     }
 
-    protected final void setCurrentSession(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
 }
