@@ -4,6 +4,7 @@ package com.kmutt.stcp.entity;
 
 import java.util.HashSet;
 import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,6 +12,7 @@ import javax.persistence.GeneratedValue;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -29,7 +31,7 @@ public class Account implements java.io.Serializable {
 
     private Integer id;
     private RoleUser roleUser;
-    private User user;
+	private User user;
     private String username;
     private String password;
     private Set<CoursePlan> coursePlans = new HashSet(0);
@@ -55,8 +57,6 @@ public class Account implements java.io.Serializable {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)
-
-
     @Column(name = "id", unique = true, nullable = false)
     public Integer getId() {
         return this.id;
@@ -66,8 +66,8 @@ public class Account implements java.io.Serializable {
         this.id = id;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "role_user_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "role_user_id")
     public RoleUser getRoleUser() {
         return this.roleUser;
     }
@@ -76,8 +76,8 @@ public class Account implements java.io.Serializable {
         this.roleUser = roleUser;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
     public User getUser() {
         return this.user;
     }

@@ -34,7 +34,7 @@ public class CurriculumServiceTest {
     @Before
     public void before() {
     	
-    	//Curriculum 1
+    	//Course 1
     	Course course = new Course();
     	course.setCode("01");
     	course.setName("course name");
