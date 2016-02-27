@@ -12,6 +12,11 @@ public interface GenericDAO<T extends Serializable> {
 
     List<T> findAll();
 
+    public List<T> querySQL(String sql);
+    public List<Object[]> querySQLByField(String sql);
+    public List<T> queryHQL(String hql);
+    public List<Object[]> queryHQLByField(String hql);
+    
     void create(final T entity);
 
     void update(final T entity);

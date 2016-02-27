@@ -29,6 +29,7 @@ public abstract class AbstractHibernateDAO<T extends Serializable> {
 
     public void create(T entity) {
         getCurrentSession().persist(entity);
+        getCurrentSession().flush();
     }
 
     public void update(T entity) {
@@ -42,6 +43,22 @@ public abstract class AbstractHibernateDAO<T extends Serializable> {
     public void deleteById(long entityId) {
         T entity = findOne(entityId);
         delete(entity);
+    }
+    
+    public List<T> querySQL(String sql) {
+        return getCurrentSession().createSQLQuery(sql).addEntity(clazz).list();
+    }
+    
+    public List<Object[]> querySQLByField(String sql) {
+        return getCurrentSession().createSQLQuery(sql).list();
+    }
+    
+    public List<T> queryHQL(String hql) {
+        return getCurrentSession().createQuery(hql).list();
+    }
+    
+    public List<Object[]> queryHQLByField(String hql) {
+        return getCurrentSession().createQuery(hql).list();
     }
 
     protected final Session getCurrentSession() {

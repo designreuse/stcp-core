@@ -1,7 +1,5 @@
-import com.kmutt.stcp.config.PersistenceConfig;
-import com.kmutt.stcp.entity.Account;
-import com.kmutt.stcp.repository.AccountRepository;
-import com.kmutt.stcp.service.AccountService;
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -12,7 +10,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import com.kmutt.stcp.config.PersistenceConfig;
+import com.kmutt.stcp.entity.Account;
+import com.kmutt.stcp.repository.AccountRepository;
 
 /**
  * Created by jirapatj on 2/19/16.
@@ -22,8 +22,6 @@ import java.util.List;
 @ContextConfiguration(classes = {PersistenceConfig.class}, loader = AnnotationConfigContextLoader.class)
 public class AccountServiceTest {
 
-    @Autowired
-    AccountService accountService;
     @Autowired
     AccountRepository accountRepository;
 
@@ -42,7 +40,7 @@ public class AccountServiceTest {
     @Test
     @Transactional
     public void createAcoount_ShouldSaveToDB() {
-        accountService.save(ac);
+    	accountRepository.create(ac);
         List<Account> accounts = accountRepository.findAll();
         assert accounts.size() == 1;
     }
