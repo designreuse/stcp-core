@@ -1,5 +1,5 @@
-package com.kmutt.stcp.newentity;
-// Generated Apr 2, 2016 6:17:49 PM by Hibernate Tools 4.3.1
+package com.kmutt.stcp.entity.backup;
+// Generated Feb 18, 2016 11:08:21 PM by Hibernate Tools 4.3.1
 
 
 import javax.persistence.Column;

@@ -1,5 +1,5 @@
-package com.kmutt.stcp.newentity;
-// Generated Apr 2, 2016 6:17:49 PM by Hibernate Tools 4.3.1
+package com.kmutt.stcp.entity.backup;
+// Generated Feb 18, 2016 11:08:21 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -29,10 +29,10 @@ public class CourseTime implements java.io.Serializable {
 
     private Integer id;
     private Course course;
-    private Date examTime;
-    private Integer semester;
-    private Integer status;
     private Date studyTime;
+    private Date examTime;
+    private Integer status;
+    private Integer semester;
 
     public CourseTime() {
     }
@@ -42,12 +42,12 @@ public class CourseTime implements java.io.Serializable {
         this.course = course;
     }
 
-    public CourseTime(Course course, Date examTime, Integer semester, Integer status, Date studyTime) {
+    public CourseTime(Course course, Date studyTime, Date examTime, Integer status, Integer semester) {
         this.course = course;
-        this.examTime = examTime;
-        this.semester = semester;
-        this.status = status;
         this.studyTime = studyTime;
+        this.examTime = examTime;
+        this.status = status;
+        this.semester = semester;
     }
 
     @Id
@@ -72,6 +72,16 @@ public class CourseTime implements java.io.Serializable {
     }
 
     @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "study_time", length = 19)
+    public Date getStudyTime() {
+        return this.studyTime;
+    }
+
+    public void setStudyTime(Date studyTime) {
+        this.studyTime = studyTime;
+    }
+
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "exam_time", length = 19)
     public Date getExamTime() {
         return this.examTime;
@@ -79,16 +89,6 @@ public class CourseTime implements java.io.Serializable {
 
     public void setExamTime(Date examTime) {
         this.examTime = examTime;
-    }
-
-
-    @Column(name = "semester")
-    public Integer getSemester() {
-        return this.semester;
-    }
-
-    public void setSemester(Integer semester) {
-        this.semester = semester;
     }
 
 
@@ -101,14 +101,14 @@ public class CourseTime implements java.io.Serializable {
         this.status = status;
     }
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "study_time", length = 19)
-    public Date getStudyTime() {
-        return this.studyTime;
+
+    @Column(name = "semester")
+    public Integer getSemester() {
+        return this.semester;
     }
 
-    public void setStudyTime(Date studyTime) {
-        this.studyTime = studyTime;
+    public void setSemester(Integer semester) {
+        this.semester = semester;
     }
 
 
