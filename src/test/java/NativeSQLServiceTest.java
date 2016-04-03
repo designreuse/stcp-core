@@ -24,7 +24,7 @@ import java.util.Set;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {PersistenceConfig.class}, loader = AnnotationConfigContextLoader.class)
-public class ServiceTest {
+public class NativeSQLServiceTest {
 
     @Autowired
     AccountRepository accountRepository;
@@ -46,8 +46,8 @@ public class ServiceTest {
     	user.setEmail("tst@gmail.com");
     	user.setFaculty("test");
     	user.setMajor("test");
-    	user.setStudyProgram("test");
-    	
+//    	user.setStudyProgram("test");
+
     	//Account 1
     	Account account = new Account();
     	account.setUsername("username1");

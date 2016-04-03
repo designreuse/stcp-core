@@ -1,6 +1,5 @@
 import com.kmutt.stcp.config.PersistenceConfig;
 import com.kmutt.stcp.entity.Course;
-import com.kmutt.stcp.entity.CourseCurriculum;
 import com.kmutt.stcp.entity.Curriculum;
 import com.kmutt.stcp.repository.CourseRepository;
 import com.kmutt.stcp.repository.CurriculumRepository;
@@ -34,44 +33,44 @@ public class CurriculumServiceTest {
     @Before
     public void before() {
     	
-    	//Course 1
-    	Course course = new Course();
-    	course.setCode("01");
-    	course.setName("course name");
-    	
-    	//Curriculum 1
-    	Curriculum cr1 = new Curriculum();
-        cr1.setName("curriculum_name_test1");
-        cr1.setStartedYear("2015");
-        cr1.setAccId(1);
-        cr1.setStartYear("2016");
-        
-        Set<CourseCurriculum> courseCurriculumList = new HashSet<CourseCurriculum>();
-        //CourseCurriculum 1
-        CourseCurriculum courseCurriculum = new CourseCurriculum();
-        courseCurriculum.setCurriculum(cr1);
-        courseCurriculum.setCourse(course);
-        courseCurriculumList.add(courseCurriculum);
-        
-        //CourseCurriculum 2
-        courseCurriculum = new CourseCurriculum();
-        courseCurriculum.setCurriculum(cr1);
-        courseCurriculum.setCourse(course);
-        courseCurriculumList.add(courseCurriculum);
-        
-        course.setCourseCurriculums(courseCurriculumList);
-        cr1.setCourseCurriculums(courseCurriculumList);
-        
-        curriculumRepository.create(cr1);
-        
-        //Curriculum 2
-        cr1 = new Curriculum();
-        cr1.setName("curriculum_name_test2");
-        cr1.setStartedYear("2015");
-        cr1.setAccId(1);
-        cr1.setStartYear("2016");
-        
-        curriculumRepository.create(cr1);
+//    	//Course 1
+//    	Course course = new Course();
+//    	course.setCode("01");
+//    	course.setName("course name");
+//
+//    	//Curriculum 1
+//    	Curriculum cr1 = new Curriculum();
+//        cr1.setName("curriculum_name_test1");
+//        cr1.setStartedYear("2015");
+//        cr1.setAccId(1);
+//        cr1.setStartYear("2016");
+//
+//        Set<CourseCurriculum> courseCurriculumList = new HashSet<CourseCurriculum>();
+//        //CourseCurriculum 1
+//        CourseCurriculum courseCurriculum = new CourseCurriculum();
+//        courseCurriculum.setCurriculum(cr1);
+//        courseCurriculum.setCourse(course);
+//        courseCurriculumList.add(courseCurriculum);
+//
+//        //CourseCurriculum 2
+//        courseCurriculum = new CourseCurriculum();
+//        courseCurriculum.setCurriculum(cr1);
+//        courseCurriculum.setCourse(course);
+//        courseCurriculumList.add(courseCurriculum);
+//
+//        course.setCourseCurriculums(courseCurriculumList);
+//        cr1.setCourseCurriculums(courseCurriculumList);
+//
+//        curriculumRepository.create(cr1);
+//
+//        //Curriculum 2
+//        cr1 = new Curriculum();
+//        cr1.setName("curriculum_name_test2");
+//        cr1.setStartedYear("2015");
+//        cr1.setAccId(1);
+//        cr1.setStartYear("2016");
+//
+//        curriculumRepository.create(cr1);
     }
 
     @Ignore
