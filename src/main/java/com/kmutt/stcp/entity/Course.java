@@ -1,4 +1,4 @@
-package com.kmutt.stcp.newentity;
+package com.kmutt.stcp.entity;
 // Generated Apr 2, 2016 6:17:49 PM by Hibernate Tools 4.3.1
 
 

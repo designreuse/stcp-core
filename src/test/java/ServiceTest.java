@@ -1,7 +1,10 @@
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
+import com.kmutt.stcp.config.PersistenceConfig;
+import com.kmutt.stcp.entity.Account;
+import com.kmutt.stcp.entity.RoleUser;
+import com.kmutt.stcp.entity.User;
+import com.kmutt.stcp.repository.AccountRepository;
+import com.kmutt.stcp.repository.RoleUserRepository;
+import com.kmutt.stcp.repository.UserRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,13 +14,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.kmutt.stcp.config.PersistenceConfig;
-import com.kmutt.stcp.entity.Account;
-import com.kmutt.stcp.entity.RoleUser;
-import com.kmutt.stcp.entity.User;
-import com.kmutt.stcp.repository.AccountRepository;
-import com.kmutt.stcp.repository.RoleUserRepository;
-import com.kmutt.stcp.repository.UserRepository;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Created by jirapatj on 2/19/16.
@@ -38,6 +37,7 @@ public class ServiceTest {
     public void before() {
     	RoleUser roleUser = new RoleUser();
     	roleUser.setRole("test");
+        roleUser.setDescription("test");
     	
     	User user = new User();
     	user.setFirstname("firstname");

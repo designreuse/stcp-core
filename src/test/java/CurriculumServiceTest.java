@@ -1,8 +1,11 @@
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
+import com.kmutt.stcp.config.PersistenceConfig;
+import com.kmutt.stcp.entity.Course;
+import com.kmutt.stcp.entity.CourseCurriculum;
+import com.kmutt.stcp.entity.Curriculum;
+import com.kmutt.stcp.repository.CourseRepository;
+import com.kmutt.stcp.repository.CurriculumRepository;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,12 +14,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.kmutt.stcp.config.PersistenceConfig;
-import com.kmutt.stcp.entity.Course;
-import com.kmutt.stcp.entity.CourseCurriculum;
-import com.kmutt.stcp.entity.Curriculum;
-import com.kmutt.stcp.repository.CourseRepository;
-import com.kmutt.stcp.repository.CurriculumRepository;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Created by jirapatj on 2/19/16.
@@ -74,31 +74,32 @@ public class CurriculumServiceTest {
         curriculumRepository.create(cr1);
     }
 
+    @Ignore
     @Test
     @Transactional
     public void querySQL() {
-    	//--------------------------------- SQL ---------------------------------//
-        List<Curriculum> curriculums = curriculumRepository.querySQL("select * "
-							        		+ "from curriculum c "
-							        		+ "join course_curriculum cc on c.id = cc.curriculum_id "
-							        		+ "join course co on co.id = cc.course_id "
-							        		+ "where co.code = '01'"
-						        		);
-        
-        System.out.println("--------------Start Result SQL-------------------");
-        System.out.println("Result size = "+curriculums.size());
-        curriculums.forEach(curriculum -> {
-        	if(curriculum.getCourseCurriculums() != null){
-	        	curriculum.getCourseCurriculums().forEach(courseCurriculum -> {
-	        		System.out.println("curriculum name = "+curriculum.getName()
-        					+", CourseCurriculum id = "+courseCurriculum.getId()
-        					+", course code = "+courseCurriculum.getCourse().getCode());
-	        		
-	        	});
-        	}
-        	System.out.println("-------------");
-        });
-        System.out.println("--------------End Result SQL-------------------");
+//    	//--------------------------------- SQL ---------------------------------//
+//        List<Curriculum> curriculums = curriculumRepository.querySQL("select * "
+//							        		+ "from curriculum c "
+//							        		+ "join course_curriculum cc on c.id = cc.curriculum_id "
+//							        		+ "join course co on co.id = cc.course_id "
+//							        		+ "where co.code = '01'"
+//						        		);
+//
+//        System.out.println("--------------Start Result SQL-------------------");
+//        System.out.println("Result size = "+curriculums.size());
+//        curriculums.forEach(curriculum -> {
+//        	if(curriculum.getCourseCurriculums() != null){
+//	        	curriculum.getCourseCurriculums().forEach(courseCurriculum -> {
+//	        		System.out.println("curriculum name = "+curriculum.getName()
+//        					+", CourseCurriculum id = "+courseCurriculum.getId()
+//        					+", course code = "+courseCurriculum.getCourse().getCode());
+//
+//	        	});
+//        	}
+//        	System.out.println("-------------");
+//        });
+//        System.out.println("--------------End Result SQL-------------------");
         
     }
     
@@ -119,32 +120,33 @@ public class CurriculumServiceTest {
 	    System.out.println("--------------End Result SQL By Field-------------------");
 	    
     }
-    
+
+    @Ignore
     @Test
     @Transactional
     public void queryHQL() {
     	//--------------------------------- HQL ---------------------------------//
-    	List<Curriculum> curriculums = curriculumRepository.queryHQL("select c "
-							        		+ "from Curriculum c "
-							        		+ "join c.courseCurriculums cc "
-							        		+ "join cc.course co "
-							        		+ "where co.code = '01'"
-						        		);
-        
-        System.out.println("--------------Start Result HQL-------------------");
-        System.out.println("Result size = "+curriculums.size());
-        curriculums.forEach(curriculum -> {
-        	
-        	if(curriculum.getCourseCurriculums() != null){
-	        	curriculum.getCourseCurriculums().forEach(courseCurriculum -> {
-	        		System.out.println("curriculum name = "+curriculum.getName()
-	        					+", CourseCurriculum id = "+courseCurriculum.getId()
-	        					+", course code = "+courseCurriculum.getCourse().getCode());
-	        	});
-        	}
-        	System.out.println("-------------");
-        });
-        System.out.println("--------------End Result HQL-------------------");
+//    	List<Curriculum> curriculums = curriculumRepository.queryHQL("select c "
+//							        		+ "from Curriculum c "
+//							        		+ "join c.courseCurriculums cc "
+//							        		+ "join cc.course co "
+//							        		+ "where co.code = '01'"
+//						        		);
+//
+//        System.out.println("--------------Start Result HQL-------------------");
+//        System.out.println("Result size = "+curriculums.size());
+//        curriculums.forEach(curriculum -> {
+//
+//        	if(curriculum.getCourseCurriculums() != null){
+//	        	curriculum.getCourseCurriculums().forEach(courseCurriculum -> {
+//	        		System.out.println("curriculum name = "+curriculum.getName()
+//	        					+", CourseCurriculum id = "+courseCurriculum.getId()
+//	        					+", course code = "+courseCurriculum.getCourse().getCode());
+//	        	});
+//        	}
+//        	System.out.println("-------------");
+//        });
+//        System.out.println("--------------End Result HQL-------------------");
         
     }
     
