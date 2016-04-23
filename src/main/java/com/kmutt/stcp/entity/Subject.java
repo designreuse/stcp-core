@@ -124,7 +124,7 @@ public class Subject implements java.io.Serializable {
     }
 
 
-    @Column(name = "detail_thai", length = 65535)
+    @Column(name = "detail_thai", length = 255)
     public String getDetailThai() {
         return this.detailThai;
     }
@@ -134,7 +134,7 @@ public class Subject implements java.io.Serializable {
     }
 
 
-    @Column(name = "detail_eng", length = 65535)
+    @Column(name = "detail_eng", length = 255)
     public String getDetailEng() {
         return this.detailEng;
     }

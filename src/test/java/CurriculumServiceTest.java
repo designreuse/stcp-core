@@ -32,7 +32,7 @@ public class CurriculumServiceTest {
 
     @Before
     public void before() {
-    	
+
 //    	//Course 1
 //    	Course course = new Course();
 //    	course.setCode("01");
@@ -99,9 +99,9 @@ public class CurriculumServiceTest {
 //        	System.out.println("-------------");
 //        });
 //        System.out.println("--------------End Result SQL-------------------");
-        
+
     }
-    
+
     @Test
     @Transactional
     public void querySQLByField() {
@@ -109,15 +109,15 @@ public class CurriculumServiceTest {
         List<Object[]> resultList = curriculumRepository.querySQLByField("select c.id, c.name "
 											        		+ "from Curriculum c "
 											    		);
-	    
+
 	    System.out.println("--------------Start Result SQL By Field-------------------");
 	    System.out.println("Result size = "+resultList.size());
 	    resultList.forEach(result -> {
-    		System.out.println("curriculum id = "+result[0] 
+    		System.out.println("curriculum id = "+result[0]
     						+", curriculum name = "+result[1]);
 	    });
 	    System.out.println("--------------End Result SQL By Field-------------------");
-	    
+
     }
 
     @Ignore
@@ -146,9 +146,9 @@ public class CurriculumServiceTest {
 //        	System.out.println("-------------");
 //        });
 //        System.out.println("--------------End Result HQL-------------------");
-        
+
     }
-    
+
     @Test
     @Transactional
     public void queryHQLByField() {
@@ -156,11 +156,11 @@ public class CurriculumServiceTest {
     	List<Object[]>resultList = curriculumRepository.queryHQLByField("select c.id, c.name "
 											        		+ "from Curriculum c "
 											    		);
-	    
+
 	    System.out.println("--------------Start Result HQL By Field-------------------");
 	    System.out.println("Result size = "+resultList.size());
 	    resultList.forEach(result -> {
-    		System.out.println("curriculum id = "+result[0] 
+    		System.out.println("curriculum id = "+result[0]
     				+", curriculum name = "+result[1]);
 	    });
 	    System.out.println("--------------End Result HQL By Field-------------------");

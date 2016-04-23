@@ -38,7 +38,7 @@ public class NativeSQLServiceTest {
     	RoleUser roleUser = new RoleUser();
     	roleUser.setRole("test");
         roleUser.setDescription("test");
-    	
+
     	User user = new User();
     	user.setFirstname("firstname");
     	user.setLastname("lastname");
@@ -54,23 +54,23 @@ public class NativeSQLServiceTest {
     	account.setPassword("password1");
     	account.setUser(user);
     	account.setRoleUser(roleUser);
-    	
+
     	//Account 2
     	Account account2 = new Account();
     	account2.setUsername("username2");
     	account2.setPassword("password2");
     	account2.setUser(user);
     	account2.setRoleUser(roleUser);
-    	
+
     	Set<Account> accounts = new HashSet<Account>();
     	accounts.add(account);
     	accounts.add(account2);
-    	
+
     	user.setAccounts(accounts);
     	roleUser.setAccounts(accounts);
-    	
+
     	userRepository.create(user);
-    	
+
     }
 
     @Test
@@ -82,16 +82,16 @@ public class NativeSQLServiceTest {
 							        		+ "join user u on u.id = a.user_id "
 							        		+ "where a.username = 'username1'"
 						        		);
-        
+
         System.out.println("--------------Start Result SQL-------------------");
         System.out.println("Result size = "+results.size());
         results.forEach(result -> {
         	System.out.println("Username = "+result.getUsername());
         });
         System.out.println("--------------End Result SQL-------------------");
-        
+
     }
-    
+
     @Test
     @Transactional
     public void querySQLByField() {
@@ -99,17 +99,17 @@ public class NativeSQLServiceTest {
         List<Object[]> results = accountRepository.querySQLByField("select a.username, a.password "
 											        		+ "from Account a "
 											    		);
-	    
+
 	    System.out.println("--------------Start Result SQL By Field-------------------");
 	    System.out.println("Result size = "+results.size());
 	    results.forEach(result -> {
-    		System.out.println("Username = "+result[0] 
+    		System.out.println("Username = "+result[0]
     						+", Password = "+result[1]);
 	    });
 	    System.out.println("--------------End Result SQL By Field-------------------");
-	    
+
     }
-    
+
     @Test
     @Transactional
     public void queryHQL() {
@@ -119,7 +119,7 @@ public class NativeSQLServiceTest {
 							        		+ "join a.user u "
 							        		+ "where a.username = 'username1'"
 						        		);
-        
+
         System.out.println("--------------Start Result HQL-------------------");
         System.out.println("Result size = "+results.size());
         results.forEach(result -> {
@@ -127,7 +127,7 @@ public class NativeSQLServiceTest {
         	System.out.println("-------------");
         });
         System.out.println("--------------End Result HQL-------------------");
-        
+
     }
 
     @Test
@@ -137,11 +137,11 @@ public class NativeSQLServiceTest {
     	List<Object[]> results = accountRepository.queryHQLByField("select a.username, a.password "
 											        		+ "from Account a "
 											    		);
-	    
+
 	    System.out.println("--------------Start Result HQL By Field-------------------");
 	    System.out.println("Result size = "+results.size());
 	    results.forEach(result -> {
-    		System.out.println("Username = "+result[0] 
+    		System.out.println("Username = "+result[0]
     				+", Password = "+result[1]);
 	    });
 	    System.out.println("--------------End Result HQL By Field-------------------");

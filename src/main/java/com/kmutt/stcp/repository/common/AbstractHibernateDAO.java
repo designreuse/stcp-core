@@ -30,7 +30,7 @@ public abstract class AbstractHibernateDAO<T extends Serializable> {
     }
 
     public void create(T entity) {
-        getCurrentSession().persist(entity);
+        getCurrentSession().merge(entity);
         getCurrentSession().flush();
     }
 
