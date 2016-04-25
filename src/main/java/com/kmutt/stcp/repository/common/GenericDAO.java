@@ -8,7 +8,7 @@ import java.util.List;
  */
 public interface GenericDAO<T extends Serializable> {
 
-    T findOne(final long id);
+    T findOne(final int id);
 
     List<T> findAll();
 
@@ -23,5 +23,5 @@ public interface GenericDAO<T extends Serializable> {
 
     void delete(final T entity);
 
-    void deleteById(final long entityId);
+    void deleteById(final int entityId);
 }
