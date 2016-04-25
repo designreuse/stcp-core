@@ -40,39 +40,46 @@ public class SubjectServiceTest {
 
     }
 
+    @Ignore
     @Test
     public void testGetCoursePlan() throws Exception {
         System.out.print(coursePlannerService.getCoursePlan(null, 0, 0));
     }
 
+    @Ignore
     @Test
     public void testGetCoursePlanByAccount() {
         System.out.print(coursePlannerService.getCoursePlan(null));
     }
 
+    @Ignore
     @Test
     public void testGetCoursePlanByAccountYear() throws Exception {
         System.out.print(coursePlannerService.getCoursePlan(null, 0));
     }
 
+    @Ignore
     @Test
     public void testInsertCoursePlan() throws Exception {
         CoursePlan coursePlan = new CoursePlan();
         coursePlannerService.insertCoursePlan(null);
     }
 
+    @Ignore
     @Test
     public void testGetSubject() throws Exception {
         String subjectId = "";
         coursePlannerService.getSubject(subjectId);
     }
 
+    @Ignore
     @Test
     public void testSearchSubjectByName() throws Exception {
         String name = "";
         coursePlannerService.searchSubjectByName(name);
     }
 
+    @Ignore
     @Test
     public void testDeleteCoursePlan() throws Exception {
         int coursePlanId = 0;
