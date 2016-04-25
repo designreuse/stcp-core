@@ -1,10 +1,9 @@
 import com.kmutt.stcp.config.PersistenceConfig;
+import com.kmutt.stcp.entity.CoursePlan;
 import com.kmutt.stcp.entity.Prerequisite;
 import com.kmutt.stcp.entity.Subject;
-import com.kmutt.stcp.repository.CourseRepository;
-import com.kmutt.stcp.repository.CurriculumRepository;
-import com.kmutt.stcp.repository.PrerequisiteRepository;
-import com.kmutt.stcp.repository.SubjectRepository;
+import com.kmutt.stcp.repository.*;
+import com.kmutt.stcp.service.CoursePlannerService;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -33,10 +32,53 @@ public class SubjectServiceTest {
     @Autowired
     PrerequisiteRepository prerequisiteRepository;
 
+    @Autowired
+    CoursePlannerService coursePlannerService;
+
     @Before
     public void before() {
 
     }
+
+    @Test
+    public void testGetCoursePlan() throws Exception {
+        System.out.print(coursePlannerService.getCoursePlan(null, 0, 0));
+    }
+
+    @Test
+    public void testGetCoursePlanByAccount() {
+        System.out.print(coursePlannerService.getCoursePlan(null));
+    }
+
+    @Test
+    public void testGetCoursePlanByAccountYear() throws Exception {
+        System.out.print(coursePlannerService.getCoursePlan(null, 0));
+    }
+
+    @Test
+    public void testInsertCoursePlan() throws Exception {
+        CoursePlan coursePlan = new CoursePlan();
+        coursePlannerService.insertCoursePlan(null);
+    }
+
+    @Test
+    public void testGetSubject() throws Exception {
+        String subjectId = "";
+        coursePlannerService.getSubject(subjectId);
+    }
+
+    @Test
+    public void testSearchSubjectByName() throws Exception {
+        String name = "";
+        coursePlannerService.searchSubjectByName(name);
+    }
+
+    @Test
+    public void testDeleteCoursePlan() throws Exception {
+        int coursePlanId = 0;
+        coursePlannerService.deleteCoursePlan(coursePlanId);
+    }
+
 
     @Ignore
     @Test
@@ -58,7 +100,6 @@ public class SubjectServiceTest {
         subjectRepository.create(main);
 
 //        prerequisiteRepository.create(prerequisite);
-
 
 
         List<Subject> list = subjectRepository.findAll();
