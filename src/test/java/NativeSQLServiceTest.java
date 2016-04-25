@@ -38,39 +38,25 @@ public class NativeSQLServiceTest {
     	RoleUser roleUser = new RoleUser();
     	roleUser.setRole("test");
         roleUser.setDescription("test");
-
-    	User user = new User();
-    	user.setFirstname("firstname");
-    	user.setLastname("lastname");
-    	user.setCitizenId("1123");
-    	user.setEmail("tst@gmail.com");
-    	user.setFaculty("test");
-    	user.setMajor("test");
-//    	user.setStudyProgram("test");
-
+    	
     	//Account 1
     	Account account = new Account();
     	account.setUsername("username1");
     	account.setPassword("password1");
-    	account.setUser(user);
     	account.setRoleUser(roleUser);
 
     	//Account 2
     	Account account2 = new Account();
     	account2.setUsername("username2");
     	account2.setPassword("password2");
-    	account2.setUser(user);
     	account2.setRoleUser(roleUser);
-
+    	
     	Set<Account> accounts = new HashSet<Account>();
     	accounts.add(account);
     	accounts.add(account2);
-
-    	user.setAccounts(accounts);
     	roleUser.setAccounts(accounts);
-
-    	userRepository.create(user);
-
+    	
+    	roleUserRepository.create(roleUser);
     }
 
     @Test
@@ -79,7 +65,7 @@ public class NativeSQLServiceTest {
     	//--------------------------------- SQL ---------------------------------//
         List<Account> results = accountRepository.querySQL("select * "
 							        		+ "from account a "
-							        		+ "join user u on u.id = a.user_id "
+							        		+ "join role_user ru on ru.id = a.role_user_id "
 							        		+ "where a.username = 'username1'"
 						        		);
 
@@ -116,7 +102,7 @@ public class NativeSQLServiceTest {
     	//--------------------------------- HQL ---------------------------------//
     	List<Account> results = accountRepository.queryHQL("select a "
 							        		+ "from Account a "
-							        		+ "join a.user u "
+							        		+ "join a.roleUser ru "
 							        		+ "where a.username = 'username1'"
 						        		);
 

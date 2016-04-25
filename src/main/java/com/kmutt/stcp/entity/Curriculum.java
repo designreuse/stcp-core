@@ -1,9 +1,11 @@
 package com.kmutt.stcp.entity;
-// Generated Apr 3, 2016 11:22:28 AM by Hibernate Tools 4.3.1
 
+// Generated Apr 3, 2016 11:22:28 AM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -22,97 +24,90 @@ import javax.persistence.Table;
 @Table(name = "curriculum", catalog = "stcpdb")
 public class Curriculum implements java.io.Serializable {
 
+	private Integer id;
+	private String name;
+	private String startedYear;
+	private Integer accId;
+	private String startYear;
+	private Set<User> users = new HashSet(0);
+	private Set<CurriculumSubject> curriculumSubjects = new HashSet(0);
 
-    private Integer id;
-    private String name;
-    private String startedYear;
-    private Integer accId;
-    private String startYear;
-    private Set<User> users = new HashSet(0);
-    private Set<CurriculumSubject> curriculumSubjects = new HashSet(0);
+	public Curriculum() {
+	}
 
-    public Curriculum() {
-    }
+	public Curriculum(String name, String startedYear, Integer accId,
+			String startYear, Set users, Set curriculumSubjects) {
+		this.name = name;
+		this.startedYear = startedYear;
+		this.accId = accId;
+		this.startYear = startYear;
+		this.users = users;
+		this.curriculumSubjects = curriculumSubjects;
+	}
 
-    public Curriculum(String name, String startedYear, Integer accId, String startYear, Set users, Set curriculumSubjects) {
-        this.name = name;
-        this.startedYear = startedYear;
-        this.accId = accId;
-        this.startYear = startYear;
-        this.users = users;
-        this.curriculumSubjects = curriculumSubjects;
-    }
+	@Id
+	@GeneratedValue(strategy = IDENTITY)
+	@Column(name = "id", unique = true, nullable = false)
+	public Integer getId() {
+		return this.id;
+	}
 
-    @Id
-    @GeneratedValue(strategy = IDENTITY)
-    @Column(name = "id", unique = true, nullable = false)
-    public Integer getId() {
-        return this.id;
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	@Column(name = "name", length = 45)
+	public String getName() {
+		return this.name;
+	}
 
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    @Column(name = "name", length = 45)
-    public String getName() {
-        return this.name;
-    }
+	@Column(name = "started_year", length = 45)
+	public String getStartedYear() {
+		return this.startedYear;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setStartedYear(String startedYear) {
+		this.startedYear = startedYear;
+	}
 
+	@Column(name = "acc_id")
+	public Integer getAccId() {
+		return this.accId;
+	}
 
-    @Column(name = "started_year", length = 45)
-    public String getStartedYear() {
-        return this.startedYear;
-    }
+	public void setAccId(Integer accId) {
+		this.accId = accId;
+	}
 
-    public void setStartedYear(String startedYear) {
-        this.startedYear = startedYear;
-    }
+	@Column(name = "start_year", length = 45)
+	public String getStartYear() {
+		return this.startYear;
+	}
 
+	public void setStartYear(String startYear) {
+		this.startYear = startYear;
+	}
 
-    @Column(name = "acc_id")
-    public Integer getAccId() {
-        return this.accId;
-    }
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "curriculum", cascade = CascadeType.ALL)
+	public Set<User> getUsers() {
+		return this.users;
+	}
 
-    public void setAccId(Integer accId) {
-        this.accId = accId;
-    }
+	public void setUsers(Set<User> users) {
+		this.users = users;
+	}
 
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "curriculum", cascade = CascadeType.ALL)
+	public Set<CurriculumSubject> getCurriculumSubjects() {
+		return this.curriculumSubjects;
+	}
 
-    @Column(name = "start_year", length = 45)
-    public String getStartYear() {
-        return this.startYear;
-    }
-
-    public void setStartYear(String startYear) {
-        this.startYear = startYear;
-    }
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "curriculum")
-    public Set<User> getUsers() {
-        return this.users;
-    }
-
-    public void setUsers(Set<User> users) {
-        this.users = users;
-    }
-
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "curriculum")
-    public Set<CurriculumSubject> getCurriculumSubjects() {
-        return this.curriculumSubjects;
-    }
-
-    public void setCurriculumSubjects(Set<CurriculumSubject> curriculumSubjects) {
-        this.curriculumSubjects = curriculumSubjects;
-    }
-
+	public void setCurriculumSubjects(Set<CurriculumSubject> curriculumSubjects) {
+		this.curriculumSubjects = curriculumSubjects;
+	}
 
 }
-
-
