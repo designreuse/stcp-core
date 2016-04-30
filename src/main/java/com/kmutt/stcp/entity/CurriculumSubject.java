@@ -42,7 +42,7 @@ public class CurriculumSubject implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "curriculum_id", nullable = false)
 	public Curriculum getCurriculum() {
 		return this.curriculum;
@@ -52,7 +52,7 @@ public class CurriculumSubject implements java.io.Serializable {
 		this.curriculum = curriculum;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "subject_id", nullable = false)
 	public Subject getSubject() {
 		return this.subject;

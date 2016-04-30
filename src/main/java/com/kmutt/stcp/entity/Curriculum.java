@@ -25,6 +25,7 @@ import javax.persistence.Table;
 public class Curriculum implements java.io.Serializable {
 
 	private Integer id;
+	private String code;
 	private String name;
 	private String startedYear;
 	private Integer accId;
@@ -56,13 +57,22 @@ public class Curriculum implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@Column(name = "name", length = 45)
+	@Column(name = "name", length = 255)
 	public String getName() {
 		return this.name;
 	}
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	@Column(name = "code", length = 255)
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
 	}
 
 	@Column(name = "started_year", length = 45)

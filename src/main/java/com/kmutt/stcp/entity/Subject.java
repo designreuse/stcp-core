@@ -65,7 +65,7 @@ public class Subject implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@Column(name = "subject_code", length = 45)
+	@Column(name = "subject_code", length = 255)
 	public String getSubjectCode() {
 		return this.subjectCode;
 	}
@@ -92,7 +92,7 @@ public class Subject implements java.io.Serializable {
 		this.nameEng = nameEng;
 	}
 
-	@Column(name = "subject_type", length = 45)
+	@Column(name = "subject_type", length = 255)
 	public String getSubjectType() {
 		return this.subjectType;
 	}
@@ -119,7 +119,7 @@ public class Subject implements java.io.Serializable {
 		this.status = status;
 	}
 
-	@Column(name = "detail_thai", length = 255)
+	@Column(name = "detail_thai",  columnDefinition="TEXT")
 	public String getDetailThai() {
 		return this.detailThai;
 	}
@@ -128,7 +128,7 @@ public class Subject implements java.io.Serializable {
 		this.detailThai = detailThai;
 	}
 
-	@Column(name = "detail_eng", length = 255)
+	@Column(name = "detail_eng", columnDefinition="TEXT")
 	public String getDetailEng() {
 		return this.detailEng;
 	}
