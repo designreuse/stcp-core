@@ -39,7 +39,7 @@ public class CoursePlannerService {
         if (account == null || semester == 0 || term == 0) {
             return null;
         }
-        List<CoursePlan> coursePlans = coursePlanRepository.queryHQL("Select * FROM CoursePlan where account=" + account + " and semesterYear = " + semester + " and semesterTerm =" + term);
+        List<CoursePlan> coursePlans = coursePlanRepository.queryHQL(" FROM CoursePlan where account=" + account + " and semesterYear = " + semester + " and semesterTerm =" + term);
         if (coursePlans != null && coursePlans.size() > 0) {
             return coursePlans.get(0);
         }
@@ -51,7 +51,7 @@ public class CoursePlannerService {
         if (account == null) {
             return null;
         }
-        List<CoursePlan> coursePlans = coursePlanRepository.queryHQL("Select * FROM CoursePlan where account=" + account);
+        List<CoursePlan> coursePlans = coursePlanRepository.queryHQL(" FROM CoursePlan where account.id=" + account.getId());
         if (coursePlans != null && coursePlans.size() > 0) {
             return coursePlans;
         }
@@ -62,7 +62,7 @@ public class CoursePlannerService {
         if (account == null || year == 0) {
             return null;
         }
-        List<CoursePlan> coursePlans = coursePlanRepository.queryHQL("Select * FROM CoursePlan where account=" + account + " and semesterYear = " + year);
+        List<CoursePlan> coursePlans = coursePlanRepository.queryHQL(" FROM CoursePlan where account=" + account + " and semesterYear = " + year);
         if (coursePlans != null && coursePlans.size() > 0) {
             return coursePlans;
         }
@@ -96,7 +96,7 @@ public class CoursePlannerService {
         if (name == null) {
             return null;
         }
-        List<Subject> subjects = subjectRepository.queryHQL("select * from Subject where nameThai like '%" + name + "%' or nameEng like '%" + name + "%'");
+        List<Subject> subjects = subjectRepository.queryHQL(" from Subject where nameThai like '%" + name + "%' or nameEng like '%" + name + "%'");
         return subjects;
     }
 

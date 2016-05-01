@@ -1,4 +1,5 @@
 import com.kmutt.stcp.config.PersistenceConfig;
+import com.kmutt.stcp.entity.Account;
 import com.kmutt.stcp.entity.CoursePlan;
 import com.kmutt.stcp.entity.Prerequisite;
 import com.kmutt.stcp.entity.Subject;
@@ -49,7 +50,11 @@ public class SubjectServiceTest {
     @Ignore
     @Test
     public void testGetCoursePlanByAccount() {
-        System.out.print(coursePlannerService.getCoursePlan(null));
+
+        Account acc = new Account();
+        acc.setId(2);
+
+        System.out.print(coursePlannerService.getCoursePlan(acc));
     }
 
     @Ignore
