@@ -27,6 +27,8 @@ public class Curriculum implements java.io.Serializable {
 	private Integer id;
 	private String code;
 	private String name;
+	private String nameEng;
+	private Integer totalCredit;
 	private String startedYear;
 	private Integer accId;
 	private String startYear;
@@ -75,7 +77,7 @@ public class Curriculum implements java.io.Serializable {
 		this.code = code;
 	}
 
-	@Column(name = "started_year", length = 45)
+	@Column(name = "end_year", length = 45)
 	public String getStartedYear() {
 		return this.startedYear;
 	}
@@ -120,4 +122,22 @@ public class Curriculum implements java.io.Serializable {
 		this.curriculumSubjects = curriculumSubjects;
 	}
 
+	@Column(name = "name_eng")
+	public String getNameEng() {
+		return nameEng;
+	}
+
+	public void setNameEng(String nameEng) {
+		this.nameEng = nameEng;
+	}
+
+	@Column(name = "total_create")
+	public Integer getTotalCredit() {
+		return totalCredit;
+	}
+
+	public void setTotalCredit(Integer totalCredit) {
+		this.totalCredit = totalCredit;
+	}
+	
 }
