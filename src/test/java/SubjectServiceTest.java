@@ -31,6 +31,9 @@ public class SubjectServiceTest {
     SubjectRepository subjectRepository;
 
     @Autowired
+    CoursePlanRepository coursePlanRepository;
+
+    @Autowired
     PrerequisiteRepository prerequisiteRepository;
 
     @Autowired
@@ -87,11 +90,17 @@ public class SubjectServiceTest {
         coursePlannerService.searchSubjectByName(name);
     }
 
-    @Ignore
+        @Ignore
     @Test
     public void testDeleteCoursePlan() throws Exception {
-        int coursePlanId = 0;
-        coursePlannerService.deleteCoursePlan(coursePlanId);
+
+        List<CoursePlan> coursePlan = coursePlanRepository.findAll();
+        assertEquals(1, coursePlan.size());
+
+        coursePlannerService.deleteCoursePlan(coursePlan.get(0).getId());
+
+        int actual = coursePlanRepository.findAll().size();
+        assertEquals(0, actual);
     }
 
 

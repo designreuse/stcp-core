@@ -103,8 +103,7 @@ public class CoursePlannerService {
     public void deleteCoursePlan(int coursePlanId) throws Exception {
 
         try {
-            CoursePlan cri = new CoursePlan();
-            cri.setId(coursePlanId);
+            CoursePlan cri = coursePlanRepository.findOne(coursePlanId);
             coursePlanRepository.delete(cri);
         } catch (Exception ex) {
             ex.printStackTrace();
