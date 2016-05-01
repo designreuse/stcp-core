@@ -39,7 +39,7 @@ public class CoursePlannerService {
         if (account == null || semester == 0 || term == 0) {
             return null;
         }
-        List<CoursePlan> coursePlans = coursePlanRepository.queryHQL(" FROM CoursePlan where account=" + account + " and semesterYear = " + semester + " and semesterTerm =" + term);
+        List<CoursePlan> coursePlans = coursePlanRepository.queryHQL(" FROM CoursePlan where account.id=" + account.getId() + " and semesterYear = " + semester + " and semesterTerm =" + term);
         if (coursePlans != null && coursePlans.size() > 0) {
             return coursePlans.get(0);
         }
@@ -62,7 +62,7 @@ public class CoursePlannerService {
         if (account == null || year == 0) {
             return null;
         }
-        List<CoursePlan> coursePlans = coursePlanRepository.queryHQL(" FROM CoursePlan where account=" + account + " and semesterYear = " + year);
+        List<CoursePlan> coursePlans = coursePlanRepository.queryHQL(" FROM CoursePlan where account.id=" + account.getId() + " and semesterYear = " + year);
         if (coursePlans != null && coursePlans.size() > 0) {
             return coursePlans;
         }

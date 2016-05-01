@@ -47,7 +47,7 @@ public class SubjectServiceTest {
         System.out.print(coursePlannerService.getCoursePlan(null, 0, 0));
     }
 
-    @Ignore
+//    @Ignore
     @Test
     public void testGetCoursePlanByAccount() {
 
