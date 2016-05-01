@@ -54,7 +54,7 @@ public class CoursePlan implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "account_id", nullable = false)
 	public Account getAccount() {
 		return this.account;
@@ -64,7 +64,7 @@ public class CoursePlan implements java.io.Serializable {
 		this.account = account;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "subject_id", nullable = false)
 	public Subject getSubject() {
 		return this.subject;
