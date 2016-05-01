@@ -44,10 +44,13 @@ public class SubjectServiceTest {
     @Ignore
     @Test
     public void testGetCoursePlan() throws Exception {
-        System.out.print(coursePlannerService.getCoursePlan(null, 0, 0));
+        Account acc = new Account();
+        acc.setId(2);
+
+        System.out.print(coursePlannerService.getCoursePlan(acc, 2015, 1));
     }
 
-//    @Ignore
+    @Ignore
     @Test
     public void testGetCoursePlanByAccount() {
 
