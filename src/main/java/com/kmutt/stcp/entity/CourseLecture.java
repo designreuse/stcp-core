@@ -42,7 +42,7 @@ public class CourseLecture implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "account_id", nullable = false)
 	public Account getAccount() {
 		return this.account;
@@ -52,7 +52,7 @@ public class CourseLecture implements java.io.Serializable {
 		this.account = account;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "course_id", nullable = false)
 	public Course getCourse() {
 		return this.course;

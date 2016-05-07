@@ -166,7 +166,7 @@ public class Subject implements java.io.Serializable {
 		this.prerequisitesForPresubjectId = prerequisitesForPresubjectId;
 	}
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "subject", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "subject", cascade = CascadeType.ALL)
 	public Set<CurriculumSubject> getCurriculumSubjects() {
 		return this.curriculumSubjects;
 	}
@@ -175,7 +175,7 @@ public class Subject implements java.io.Serializable {
 		this.curriculumSubjects = curriculumSubjects;
 	}
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "subject", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "subject", cascade = CascadeType.ALL)
 	public Set<CoursePlan> getCoursePlans() {
 		return this.coursePlans;
 	}

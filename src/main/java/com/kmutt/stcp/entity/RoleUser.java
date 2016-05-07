@@ -64,7 +64,7 @@ public class RoleUser implements java.io.Serializable {
 		this.role = role;
 	}
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "roleUser", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "roleUser", cascade = CascadeType.ALL)
 	public Set<Account> getAccounts() {
 		return this.accounts;
 	}

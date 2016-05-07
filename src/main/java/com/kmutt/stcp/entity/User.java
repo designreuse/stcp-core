@@ -198,7 +198,7 @@ public class User implements java.io.Serializable {
 		this.major = major;
 	}
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
 	public Set<Account> getAccounts() {
 		return this.accounts;
 	}

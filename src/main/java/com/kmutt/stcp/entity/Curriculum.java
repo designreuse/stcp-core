@@ -104,7 +104,7 @@ public class Curriculum implements java.io.Serializable {
 		this.startYear = startYear;
 	}
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "curriculum", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "curriculum", cascade = CascadeType.ALL)
 	public Set<User> getUsers() {
 		return this.users;
 	}
