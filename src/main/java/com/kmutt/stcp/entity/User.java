@@ -88,7 +88,7 @@ public class User implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "curriculum_id")
 	public Curriculum getCurriculum() {
 		return this.curriculum;

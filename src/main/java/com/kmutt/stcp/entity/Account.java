@@ -52,7 +52,7 @@ public class Account implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "role_user_id")
 	public RoleUser getRoleUser() {
 		return this.roleUser;
@@ -62,7 +62,7 @@ public class Account implements java.io.Serializable {
 		this.roleUser = roleUser;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "user_id")
 	public User getUser() {
 		return this.user;
@@ -90,7 +90,7 @@ public class Account implements java.io.Serializable {
 		this.password = password;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "account", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "account", cascade = CascadeType.ALL)
 	public Set<CoursePlan> getCoursePlans() {
 		return this.coursePlans;
 	}

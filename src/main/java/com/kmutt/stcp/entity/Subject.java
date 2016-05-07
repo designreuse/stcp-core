@@ -137,7 +137,7 @@ public class Subject implements java.io.Serializable {
 		this.detailEng = detailEng;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "subject", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "subject", cascade = CascadeType.ALL)
 	public Set<Course> getCourses() {
 		return this.courses;
 	}
@@ -146,7 +146,7 @@ public class Subject implements java.io.Serializable {
 		this.courses = courses;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "subjectBySubjectId", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "subjectBySubjectId", cascade = CascadeType.ALL)
 	public Set<Prerequisite> getPrerequisitesForSubjectId() {
 		return this.prerequisitesForSubjectId;
 	}
@@ -156,7 +156,7 @@ public class Subject implements java.io.Serializable {
 		this.prerequisitesForSubjectId = prerequisitesForSubjectId;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "subjectByPresubjectId", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "subjectByPresubjectId", cascade = CascadeType.ALL)
 	public Set<Prerequisite> getPrerequisitesForPresubjectId() {
 		return this.prerequisitesForPresubjectId;
 	}
@@ -166,7 +166,7 @@ public class Subject implements java.io.Serializable {
 		this.prerequisitesForPresubjectId = prerequisitesForPresubjectId;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "subject", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "subject", cascade = CascadeType.ALL)
 	public Set<CurriculumSubject> getCurriculumSubjects() {
 		return this.curriculumSubjects;
 	}
@@ -175,7 +175,7 @@ public class Subject implements java.io.Serializable {
 		this.curriculumSubjects = curriculumSubjects;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "subject", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "subject", cascade = CascadeType.ALL)
 	public Set<CoursePlan> getCoursePlans() {
 		return this.coursePlans;
 	}

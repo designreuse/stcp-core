@@ -42,7 +42,7 @@ public class Prerequisite implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "subject_id")
 	public Subject getSubjectBySubjectId() {
 		return this.subjectBySubjectId;
@@ -52,7 +52,7 @@ public class Prerequisite implements java.io.Serializable {
 		this.subjectBySubjectId = subjectBySubjectId;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "presubject_id")
 	public Subject getSubjectByPresubjectId() {
 		return this.subjectByPresubjectId;

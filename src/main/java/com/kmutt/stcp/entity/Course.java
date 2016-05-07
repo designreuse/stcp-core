@@ -62,7 +62,7 @@ public class Course implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "subject_id", nullable = false)
 	public Subject getSubject() {
 		return this.subject;
@@ -146,7 +146,7 @@ public class Course implements java.io.Serializable {
 		this.examTime = examTime;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "course", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "course", cascade = CascadeType.ALL)
 	public Set<CourseLecture> getCourseLectures() {
 		return this.courseLectures;
 	}
